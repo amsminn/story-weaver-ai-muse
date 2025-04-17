@@ -3,8 +3,17 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+interface NavbarProps {
+  onSignupClick?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onSignupClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleSignupClick = () => {
+    onSignupClick?.();
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="w-full py-4 bg-white/90 backdrop-blur-sm fixed top-0 z-50 shadow-sm">
@@ -19,7 +28,12 @@ const Navbar = () => {
           <a href="#how-it-works" className="text-gray-700 hover:text-storyweaver-primary transition">작동 원리</a>
           <a href="#comparison" className="text-gray-700 hover:text-storyweaver-primary transition">비교</a>
           <a href="#faq" className="text-gray-700 hover:text-storyweaver-primary transition">FAQ</a>
-          <Button className="bg-storyweaver-primary hover:bg-storyweaver-primary/90">베타 신청</Button>
+          <Button 
+            className="bg-storyweaver-primary hover:bg-storyweaver-primary/90"
+            onClick={handleSignupClick}
+          >
+            베타 신청
+          </Button>
         </div>
 
         {/* Mobile Nav Toggle */}
@@ -68,7 +82,7 @@ const Navbar = () => {
             </a>
             <Button 
               className="bg-storyweaver-primary hover:bg-storyweaver-primary/90 w-full mt-2"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={handleSignupClick}
             >
               베타 신청
             </Button>
@@ -80,3 +94,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

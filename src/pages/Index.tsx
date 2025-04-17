@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import EditorDemo from "@/components/EditorDemo";
@@ -11,9 +11,15 @@ import SignupForm from "@/components/SignupForm";
 import { Sparkles, BookOpen, RefreshCw } from "lucide-react";
 
 const Index = () => {
+  const signupRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSignup = () => {
+    signupRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar onSignupClick={scrollToSignup} />
 
       {/* Hero Section */}
       <section className="pt-24 pb-16 md:pt-32 md:pb-20 bg-gradient-to-b from-white to-storyweaver-light/30">
@@ -26,7 +32,11 @@ const Index = () => {
               StoryWeaver AI는 웹소설 작가를 위한 AI 글쓰기 도우미로, 단조로운 설명문이 아닌 생생한 비유와 묘사를 제안합니다.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Button size="lg" className="bg-storyweaver-primary hover:bg-storyweaver-primary/90">
+              <Button 
+                size="lg" 
+                className="bg-storyweaver-primary hover:bg-storyweaver-primary/90"
+                onClick={scrollToSignup}
+              >
                 베타 테스터 신청하기
               </Button>
               <Button size="lg" variant="outline">
@@ -87,7 +97,11 @@ const Index = () => {
       </section>
 
       {/* Signup Form */}
-      <section id="signup" className="py-16 md:py-24 bg-gradient-to-b from-storyweaver-light/30 to-white">
+      <section 
+        ref={signupRef} 
+        id="signup" 
+        className="py-16 md:py-24 bg-gradient-to-b from-storyweaver-light/30 to-white"
+      >
         <SignupForm />
       </section>
 
@@ -117,3 +131,4 @@ const Index = () => {
 };
 
 export default Index;
+
