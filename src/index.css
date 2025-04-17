@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -79,6 +73,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -98,4 +93,33 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.typewriter h1 {
+  overflow: hidden;
+  border-right: 0.15em solid;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  @apply animate-typing border-storyweaver-primary;
+}
+
+.cursor {
+  @apply animate-cursor-blink;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-storyweaver-primary to-storyweaver-secondary text-transparent bg-clip-text;
+}
+
+.section-divider {
+  @apply w-24 h-1 mx-auto my-8 bg-gradient-to-r from-storyweaver-primary to-storyweaver-secondary rounded-full;
+}
+
+.feature-card {
+  @apply p-6 border rounded-lg transition-all duration-300 hover:shadow-lg hover:border-storyweaver-primary/30 bg-white;
+}
+
+.feature-icon {
+  @apply w-12 h-12 text-storyweaver-primary mb-4;
 }
